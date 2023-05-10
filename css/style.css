@@ -1,0 +1,16 @@
+*, html {
+    margin: 0 auto;
+}
+body {
+    margin: 0 auto;
+}
+
+.container {
+    padding: 30px;
+    background-color: #f1f1f1;
+    max-width: 1200px;
+}
+h1 {
+
+    text-align: center;
+}
