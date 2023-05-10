@@ -109,3 +109,67 @@ new Car('bmw', 100000).getInfo();
 
 //типы интерфейсов
 
+interface IUserAge {
+    age:number
+}
+interface IUser extends IUserAge{
+    name: string;
+    email: string;
+}
+
+
+const user1: IUser = {
+    email: 'alkfwj@;kljdg.com',
+    name: 'Alex',
+    age: 23
+} 
+const user2: IUser = {
+    email: 'alkfwj@;kljdg.com',
+    name: 'Alex',
+    age: 23
+} 
+
+const users: IUser[] = [user1, user2, {
+    email: 'alkfwj@;kljdg.com',
+    name: 'Alex',
+    age: 23
+},
+    {
+        email: 'alkfwj@;kljdg.com',
+        name: 'Alex',
+        age: 23
+    }];
+
+
+    // enum
+
+enum EnumRoles{
+        ADMIN, GUEST, USER
+}
+const enum EnumColors {
+    black, pink, green
+}
+interface IUser222 {
+       role:EnumRoles,
+       color:EnumColors
+} 
+   
+const user222: IUser222 = {
+    role: EnumRoles.ADMIN,
+    color: EnumColors.pink
+}
+
+console.log(EnumRoles[EnumRoles.ADMIN]);
+
+const inputElement = document.querySelector('input');
+const value1 = (inputElement as HTMLInputElement).value;
+const value2 = (<HTMLInputElement> inputElement).value;
+
+const getLength = (text: string | null) => {
+    return text?.length
+}
+getLength(null);
+
+
+
+
