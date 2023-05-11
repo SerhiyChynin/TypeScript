@@ -170,6 +170,94 @@ const getLength = (text: string | null) => {
 }
 getLength(null);
 
+//Generic
+
+function f1 <T>(args: T):T {
+    return args;
+}
+f1<string>('Hello');
+f1<number>(22);
+
+class Channel <T> {
+    private name:T;
+    constructor(name: T) {
+        this.name = name
+    }
+    getName():T {
+        return this.name;
+    }
+}
+
+new Channel<string>('Hello!');
+new Channel<number>(222);
+
+const f2 = <T>(args: T): T => {
+    return args;
+}
+f2<number>(234);
+f2<boolean>(true);
+
+interface IPair<K, V> {  //два дженерика
+    key: K,
+    value: V
+}
+
+const pair1: IPair<string, number> = {
+    key: 'Hello',
+    value: 222
+} 
+const pair2: IPair<number, number> = {
+    key: 123,
+    value: 222
+} 
+
+type TypeLength = {
+    length: number;
+}
+
+function getNameLength<T extends TypeLength>(entity:T):number {
+    return entity.length;
+}
+
+getNameLength('lkjasdf')
+getNameLength([1, 2, 3])
+
+// Pick, Omit, Partial
+
+interface ICar {
+    id: number,
+    name: string,
+    price: number,
+    yearBuild: number
+}
+
+interface ICarCreate extends Omit<ICar, 'id'> {  //Omit вырезает, исключает то что указали и берет все остальное
+}
+const car: ICarCreate = {
+    name: 'BMW',
+    price: 120000,
+    yearBuild: 1999
+}
+
+interface ICarId extends Pick<ICar, 'id'> {  // Pick хватает только то что выбрали
+
+}
+
+const carId: ICarId = {
+    id: 123
+}
+
+interface IOptionalCar extends Partial<ICar> {  //Partial все свойства становяться не обязательными
+
+}
+
+const cars: IOptionalCar = {
+    
+}
+
+
+
+
 
 
 
