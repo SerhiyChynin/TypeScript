@@ -255,7 +255,53 @@ const cars: IOptionalCar = {
     
 }
 
+interface IReadonlyCar extends Readonly<ICar>{  //все поля только для чтения
 
+}
+
+type TypeCarRecord = Record<'Name' | 'price', string | number>;
+
+// const car: TypeCarRecord = {
+    
+// }
+
+interface IRequireCar extends Required<ICar> {}  //Required все свойства становяться обязательными.
+
+type TypeGetName = () => string;
+
+type Return = ReturnType<TypeGetName>; //видим что будет возвращать функция
+
+//Extract
+
+type Any = Extract<'max' | 'den', 'den' | 'michael'> // Extract вернет то что дублируеться
+type OneMore = Exclude<'max' | 'den', 'den' | 'michael'> // Excludeисключает все кроме первого параметра
+type NotNull = NonNullable<string | number | null | undefined> // позволяет удалить все null i undefiend
+
+
+//Декораторы - надстройка функция которая накладует сверх функционал на класс метод.. 
+
+function LogClass(constructor: Function) {
+    console.log(constructor.name);
+}
+
+class Plane {
+    constructor(id: number) {
+        
+    }
+}
+
+//Расширеные типы
+
+type TypeIsNumber<T> = T extends number ? 'yes' : 'no'  //расширяется от числа и проверка если равен числу то да если нет то нет
+
+type Type1 = TypeIsNumber<number>
+type Type2 = TypeIsNumber<string>
+
+type TypeBrand = 'bmw' | 'porsche' | 'volvo'
+type TypePrice = '$100000' | '$120000' | '$70000'
+type TypeCar = `${TypeBrand} ${TypePrice}`
+
+const carOne: TypeCar = 'porsche $120000' //обьединяет дваьтипа в один.
 
 
 
